@@ -10,7 +10,7 @@ async function main() {
     const userId = profile.userId;
 
     // 登入後導回你的官網 + 帶入 line_id 參數
-    window.location.href = `https://www.tevc.com.tw/item/register?line_id=${userId}`;
+   window.location.href = `https://www.tevc.com.tw/item/register?line_id=${userId}`;
   }
 }
 
