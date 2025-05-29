@@ -1,24 +1,32 @@
-const liffId = '2005677310-7VNqpWnW'; // 你的 LIFF ID
+const liffId = '2005677310-7VNqpWnW';
 
 async function main() {
+  console.log("初始化 LIFF...");
   await liff.init({ liffId });
+  console.log("LIFF 初始化完成");
 
-  // 不判斷登入狀態，直接呼叫 login()
   if (!liff.isLoggedIn()) {
+    console.log("尚未登入，開始 login");
     liff.login();
     return;
   }
 
+  console.log("已登入，開始取得 profile");
+
   try {
     const profile = await liff.getProfile();
-    const userId = profile.userId;
+    console.log("取得 profile 成功", profile);
 
-    // 跳轉到 redirect.html，夾帶 line_id
-    window.location.href = `https://tevctools.github.io/liff-login/redirect.html?line_id=${userId}`;
+    const userId = profile.userId;
+    const redirectUrl = `https://tevctools.github.io/liff-login/redirect.html?line_id=${userId}`;
+    console.log("導向網址：", redirectUrl);
+    window.location.href = redirectUrl;
+
   } catch (err) {
-    console.error("取得 profile 失敗，可能沒有授權：", err);
+    console.error("取得 profile 失敗：", err);
+    console.log("強制登出，重新登入");
     liff.logout();
-    liff.login(); // 強制重新登入
+    liff.login();
   }
 }
 
