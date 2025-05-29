@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>登入後導向提示</title>
+  <title>登入成功</title>
 </head>
 <body>
   <h2>✅ LINE 登入成功</h2>
@@ -17,7 +17,7 @@
     const params = new URLSearchParams(window.location.search);
     const lineId = params.get('line_id');
     const warrantyUrl = `https://www.tevc.com.tw/item/register?line_id=${lineId}`;
-    
+
     function goToSignIn() {
       window.location.href = "https://www.tevc.com.tw/user/sign_in";
     }
