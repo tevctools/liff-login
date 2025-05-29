@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>登入後導向提示</title>
+</head>
+<body>
+  <h2>✅ LINE 登入成功</h2>
+  <p>請點下方按鈕登入您的會員帳號</p>
+  <p>登入完成後，請點下方「前往保固頁」即可完成登錄</p>
+
+  <button onclick="goToSignIn()">➡️ 前往登入頁面</button>
+  <br><br>
+  <a id="warrantyLink" href="#">🔧 登入後點我前往保固頁</a>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const lineId = params.get('line_id');
+    const warrantyUrl = `https://www.tevc.com.tw/item/register?line_id=${lineId}`;
+    
+    function goToSignIn() {
+      window.location.href = "https://www.tevc.com.tw/user/sign_in";
+    }
+
+    document.getElementById('warrantyLink').href = warrantyUrl;
+  </script>
+</body>
+</html>
