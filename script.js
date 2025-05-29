@@ -1,4 +1,4 @@
-const liffId = '2005677310-7VNqpWnW';
+const liffId = '2005677310-ldwxZ767';
 
 async function main() {
   console.log("初始化 LIFF...");
